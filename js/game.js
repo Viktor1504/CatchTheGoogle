@@ -38,7 +38,7 @@ class Google extends Unit {
     }
 }
 
-class Game {
+export class Game {
     #settings = {
         pointsToWin: 10,
         gridSize: {
@@ -234,7 +234,8 @@ class Game {
         }
     }
 }
+/*
 
 module.exports = {
     Game,
-}
+}*/

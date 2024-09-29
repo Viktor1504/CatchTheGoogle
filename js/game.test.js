@@ -175,8 +175,8 @@ describe('game tests', () => {
             },
         }
         game.score = {
-            1: { points: 0 },
-            2: { points: 0 },
+            1: {points: 0},
+            2: {points: 0},
         }
 
         await game.start()
