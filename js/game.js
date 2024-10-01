@@ -39,6 +39,10 @@ class Google extends Unit {
 }
 
 export class Game {
+    constructor(eventEmitter) {
+        this.eventEmitter = eventEmitter
+    }
+
     #settings = {
         pointsToWin: 10,
         gridSize: {
@@ -139,8 +143,8 @@ export class Game {
         if (!excludeGoogle) {
             notCrossedPosition.push(this.#google.position);
         }
-
         this.#google = new Google(this.#getRandomPosition(notCrossedPosition));
+        this.eventEmitter.emit('changePosition');
     }
 
     #movePlayer(movingPlayer, anotherPlayer, delta) {
@@ -156,6 +160,7 @@ export class Game {
             movingPlayer.position = new Position(movingPlayer.position.x, movingPlayer.position.y + delta.y);
         }
         this.#checkGoogleCatching(movingPlayer);
+        this.eventEmitter.emit('changePosition');
     }
 
     movePlayer1Right() {
@@ -225,6 +230,7 @@ export class Game {
         if (player.position.equal(this.#google.position)) {
             this.#score[player.id].points++;
             if (this.#score[player.id].points === this.#settings.pointsToWin) {
+                console.log('stop game')
                 this.#finishGame()
             } else {
                 clearInterval(this.#googleSetIntervalId)
@@ -234,6 +240,7 @@ export class Game {
         }
     }
 }
+
 /*
 
 module.exports = {

@@ -2,7 +2,6 @@
 @import "common.css";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-
 /* Page //======================================================================================================================================================== */
 
 .container {
@@ -148,7 +147,7 @@ select {
     border-collapse: separate;
     border-spacing: 12px 6px;
     table-layout:fixed;
-    display: flex;
+    display: table;
     align-items: center;
     justify-content: center;
 }
